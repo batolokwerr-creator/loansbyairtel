@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airtel Congo - Loan Approved & Disbursed</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%2316a34a'/><text x='16' y='22' font-family='Georgia, serif' font-size='18' font-weight='bold' fill='%23ffffff' text-anchor='middle'>✓</text></svg>">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon">a</div>
+      <div class="brand-text">
+        <span class="brand-title">Airtel Congo</span>
+        <span class="brand-subtitle">Financial Services</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="index.html" class="nav-link">Home</a>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+    <div class="card-container" style="text-align: center;">
+      <!-- Green top accent bar for success -->
+      <div class="card-top-bar" style="background: #16a34a;"></div>
+
+      <!-- Animated Success Checkmark -->
+      <div style="width: 72px; height: 72px; background: #dcfce7; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 18px; color: #16a34a; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.2);">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+
+      <h1 class="card-title" style="color: #101B33; margin-bottom: 8px;">Loan Disbursed!</h1>
+      <p class="card-subtitle" style="margin-bottom: 24px;">
+        Funds have been transferred to your Airtel Money wallet successfully.
+      </p>
+
+      <!-- Disbursement Summary Card -->
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; text-align: left; margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px dashed #cbd5e1; margin-bottom: 12px;">
+          <span style="font-size: 13px; color: #64748b;">Disbursed Amount</span>
+          <span id="disbursedAmountDisplay" style="font-size: 20px; font-weight: 700; color: #16a34a;">$1,000.00</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Transaction Reference:</span>
+          <span class="summary-val" style="font-family: monospace; font-size: 12px; font-weight: 600;">AM-CG-948102</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Destination Wallet:</span>
+          <span class="summary-val" id="recipientPhoneDisplay">+243 812 345 678</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Monthly Repayment:</span>
+          <span class="summary-val" id="monthlyPaymentDisplay">$88.85 / mo</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Status:</span>
+          <span class="summary-val" style="color: #16a34a; font-weight: 600;">COMPLETED</span>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <a href="index.html" class="btn-primary" style="text-decoration: none;">RETURN TO HOME</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Light Footer -->
+  <footer class="footer-light">
+    &copy; 2026 Airtel Congo
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const storedApp = JSON.parse(localStorage.getItem('airtel_application') || '{}');
+        if (storedApp.loanAmount) {
+          const amt = parseFloat(storedApp.loanAmount);
+          document.getElementById('disbursedAmountDisplay').textContent = `$${amt.toLocaleString('en-US')}.00`;
+        }
+        if (storedApp.phone) {
+          document.getElementById('recipientPhoneDisplay').textContent = `+243 ${storedApp.phone}`;
+        }
+      } catch (e) {}
+    });
+  </script>
+</body>
+</html>

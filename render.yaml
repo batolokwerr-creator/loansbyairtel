@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: airtel-congo
+    env: static
+    buildCommand: ""
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+

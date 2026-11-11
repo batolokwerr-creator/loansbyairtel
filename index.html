@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airtel Congo - Fast Loans & Financial Services</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23E51937'/><text x='16' y='22' font-family='Georgia, serif' font-size='18' font-weight='bold' fill='%23ffffff' text-anchor='middle'>a</text></svg>">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon">a</div>
+      <div class="brand-text">
+        <span class="brand-title">Airtel Congo</span>
+        <span class="brand-subtitle">Financial Services</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <div class="lang-selector" title="Change Language">
+        <svg class="globe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        <span>English</span>
+        <span class="chevron-icon">▾</span>
+      </div>
+      <a href="#" class="nav-link">Sign In</a>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+    <div class="card-container">
+      <div class="card-top-bar"></div>
+
+      <!-- Card Header -->
+      <div class="card-header">
+        <h1 class="card-title">Get Your Loan Approved Fast</h1>
+        <p class="card-subtitle">Quick approval • Competitive rates • Flexible terms</p>
+      </div>
+
+      <!-- Loan Calculator Card Component -->
+      <div class="calc-box">
+        <div class="calc-box-title">Loan Calculator</div>
+
+        <!-- Slider 1: Loan Amount -->
+        <div class="slider-group">
+          <div class="slider-header">
+            <span class="slider-label">Loan Amount</span>
+            <span class="slider-value" id="loanAmountVal">$1,000</span>
+          </div>
+          <input 
+            type="range" 
+            id="loanAmountSlider" 
+            class="custom-range" 
+            min="50" 
+            max="10000" 
+            step="50" 
+            value="1000" 
+            aria-label="Loan Amount Slider"
+          >
+          <div class="slider-limits">
+            <span>$50</span>
+            <span>$10,000</span>
+          </div>
+        </div>
+
+        <!-- Slider 2: Loan Term -->
+        <div class="slider-group">
+          <div class="slider-header">
+            <span class="slider-label">Loan Term</span>
+            <span class="slider-value" id="loanTermVal">12 months</span>
+          </div>
+          <input 
+            type="range" 
+            id="loanTermSlider" 
+            class="custom-range" 
+            min="6" 
+            max="60" 
+            step="6" 
+            value="12" 
+            aria-label="Loan Term Slider"
+          >
+          <div class="slider-limits">
+            <span>6 months</span>
+            <span>60 months</span>
+          </div>
+        </div>
+
+        <!-- Calculated Monthly Payment Display -->
+        <div class="monthly-payment-box">
+          <span class="payment-label">Monthly Payment</span>
+          <span class="payment-amount" id="monthlyPaymentVal">$88.85</span>
+        </div>
+      </div>
+
+      <!-- Apply Now CTA Button -->
+      <a href="apply.html" id="applyNowBtn" class="btn-primary">APPLY NOW</a>
+
+      <!-- Key Trust Features -->
+      <div class="features-row">
+        <!-- Feature 1 -->
+        <div class="feature-col">
+          <div class="feature-icon-wrapper" style="color: #ff9800;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <div class="feature-name">Fast Approval</div>
+          <div class="feature-desc">Within 24 hours</div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-col">
+          <div class="feature-icon-wrapper" style="color: #d97706;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-4zm-6-2h4v2h-4V4zm2 12c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"/>
+            </svg>
+          </div>
+          <div class="feature-name">Low Rates</div>
+          <div class="feature-desc">From 12%</div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-col">
+          <div class="feature-icon-wrapper" style="color: #eab308;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+            </svg>
+          </div>
+          <div class="feature-name">Secure</div>
+          <div class="feature-desc">Bank-level</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Dark Footer -->
+  <footer class="footer-dark">
+    &copy; 2026 Airtel Congo
+  </footer>
+
+  <script src="js/calculator.js"></script>
+</body>
+</html>

