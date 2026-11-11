@@ -1,0 +1,832 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap');
+
+:root {
+  --airtel-red: #E51937;
+  --airtel-red-dark: #C90E2A;
+  --airtel-red-light: #FF4A65;
+  --airtel-red-bg: #FFF5F6;
+  --airtel-navy: #101B33;
+  --airtel-navy-light: #1A2B4C;
+  --text-main: #1E293B;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
+  --border-color: #E2E8F0;
+  --border-focus: #E51937;
+  --bg-page: #F5F6F8;
+  --bg-card: #FFFFFF;
+  --bg-box: #F8FAFC;
+  --btn-gray: #E2E8F0;
+  --btn-gray-hover: #CBD5E1;
+  --btn-gray-text: #475569;
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
+  --shadow-btn: 0 4px 14px rgba(229, 25, 55, 0.25);
+  --radius-card: 16px;
+  --radius-input: 8px;
+  --radius-btn: 8px;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   TOP NAVBAR
+============================================================ */
+.navbar {
+  background: #ffffff;
+  border-bottom: 1px solid #f1f3f5;
+  padding: 12px 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  background-color: var(--airtel-red);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(229, 25, 55, 0.3);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  color: var(--airtel-red);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.2px;
+  line-height: 1.15;
+}
+
+.brand-subtitle {
+  color: var(--text-muted);
+  font-size: 9.5px;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.lang-selector {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.lang-selector:hover {
+  background: #f1f5f9;
+}
+
+.lang-selector .globe-icon {
+  width: 16px;
+  height: 16px;
+  color: #38bdf8;
+}
+
+.lang-selector .chevron-icon {
+  font-size: 9px;
+  color: #64748b;
+  margin-left: 2px;
+}
+
+.nav-link {
+  color: #1e293b;
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--airtel-red);
+}
+
+/* ============================================================
+   PAGE LAYOUT & CONTAINER
+============================================================ */
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 16px;
+}
+
+.card-container {
+  width: 100%;
+  max-width: 480px;
+  background: var(--bg-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+  padding: 32px 32px 28px 32px;
+}
+
+/* Top curved red bar on card */
+.card-top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--airtel-red);
+  border-top-left-radius: var(--radius-card);
+  border-top-right-radius: var(--radius-card);
+}
+
+/* Card Header */
+.card-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--airtel-navy);
+  margin-bottom: 6px;
+}
+
+.card-subtitle {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ============================================================
+   LOAN CALCULATOR BOX (LANDING PAGE)
+============================================================ */
+.calc-box {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  background: #ffffff;
+  margin-bottom: 22px;
+}
+
+.calc-box-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--airtel-navy);
+  margin-bottom: 18px;
+}
+
+.slider-group {
+  margin-bottom: 18px;
+}
+
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.slider-label {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #334155;
+}
+
+.slider-value {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--airtel-red);
+}
+
+/* Range input styling */
+.custom-range {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #e2e8f0;
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.custom-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--airtel-red);
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(229, 25, 55, 0.4);
+  border: 2px solid #ffffff;
+  transition: transform 0.1s ease;
+}
+
+.custom-range::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.custom-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--airtel-red);
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(229, 25, 55, 0.4);
+  border: 2px solid #ffffff;
+}
+
+.slider-limits {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 5px;
+}
+
+/* Result Box */
+.monthly-payment-box {
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.payment-label {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.payment-amount {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--airtel-red);
+  font-family: var(--font-sans);
+}
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+.btn-primary {
+  width: 100%;
+  background-color: var(--airtel-red);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-btn);
+  padding: 13px 20px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--airtel-red-dark);
+  box-shadow: 0 6px 18px rgba(229, 25, 55, 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  flex: 1;
+  background-color: var(--btn-gray);
+  color: var(--btn-gray-text);
+  border: none;
+  border-radius: var(--radius-btn);
+  padding: 13px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-secondary:hover {
+  background-color: var(--btn-gray-hover);
+}
+
+.btn-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-group .btn-primary {
+  flex: 1;
+}
+
+/* ============================================================
+   TRUST FEATURES / BADGES (LANDING PAGE)
+============================================================ */
+.features-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 28px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.feature-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-icon-wrapper {
+  margin-bottom: 6px;
+  font-size: 20px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--airtel-navy);
+  margin-bottom: 2px;
+}
+
+.feature-desc {
+  font-size: 10.5px;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   PROGRESS BAR (MULTI-STEP)
+============================================================ */
+.progress-bar-container {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.progress-segment {
+  flex: 1;
+  height: 4px;
+  border-radius: 999px;
+  background-color: #E2E8F0;
+  transition: background-color 0.3s ease;
+}
+
+.progress-segment.active {
+  background-color: var(--airtel-red);
+}
+
+.progress-segment.completed {
+  background-color: var(--airtel-navy);
+}
+
+/* ============================================================
+   FORM FIELDS & INPUTS
+============================================================ */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-input);
+  padding: 10px 14px;
+  font-size: 13.5px;
+  font-family: var(--font-sans);
+  color: #1e293b;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px rgba(229, 25, 55, 0.12);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+/* Phone input with DRC country code prefix */
+.phone-input-group {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-input);
+  background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.phone-input-group:focus-within {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px rgba(229, 25, 55, 0.12);
+}
+
+.phone-prefix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+  background: #f8fafc;
+  border-right: 1px solid var(--border-color);
+  border-top-left-radius: var(--radius-input);
+  border-bottom-left-radius: var(--radius-input);
+  user-select: none;
+}
+
+.phone-input-group .form-input {
+  border: none;
+  border-radius: 0;
+  border-top-right-radius: var(--radius-input);
+  border-bottom-right-radius: var(--radius-input);
+  box-shadow: none;
+}
+
+.form-helper {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 5px;
+}
+
+/* ============================================================
+   APPLICATION SUMMARY BOX (STEP 3)
+============================================================ */
+.summary-box {
+  background-color: #fafbfc;
+  border: 1px solid #edf2f7;
+  border-left: 3.5px solid var(--airtel-red);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-top: 18px;
+  margin-bottom: 20px;
+}
+
+.summary-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--airtel-navy);
+  margin-bottom: 12px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 7px;
+}
+
+.summary-item:last-child {
+  margin-bottom: 0;
+}
+
+.summary-label {
+  color: var(--text-muted);
+}
+
+.summary-val {
+  color: #1e293b;
+  font-weight: 500;
+  text-align: right;
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   VERIFICATION REQUIRED SCREEN (IMAGE 4)
+============================================================ */
+.verification-body {
+  background-color: var(--airtel-red);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.verification-container {
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Circular glowing document icon */
+.verify-icon-outer {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+}
+
+.verify-icon-inner {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.verify-icon-inner svg {
+  width: 32px;
+  height: 32px;
+  color: #ffffff;
+  fill: currentColor;
+}
+
+.verify-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 14px;
+  letter-spacing: -0.3px;
+}
+
+.verify-description {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.94);
+  margin-bottom: 24px;
+  max-width: 420px;
+}
+
+.verify-description strong {
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.4);
+  text-underline-offset: 3px;
+}
+
+/* Countdown Pill */
+.countdown-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  color: #ffffff;
+  margin-bottom: 24px;
+  backdrop-filter: blur(4px);
+}
+
+.countdown-number {
+  background: rgba(0, 0, 0, 0.25);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.btn-verify-white {
+  background-color: #ffffff;
+  color: var(--airtel-red);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  border-radius: 999px;
+  padding: 13px 36px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-verify-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  background-color: #fdfdfd;
+}
+
+.btn-verify-white:active {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   PIN / CREDENTIALS VERIFICATION MODAL / VIEW
+============================================================ */
+.pin-input-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.pin-digit {
+  width: 50px;
+  height: 54px;
+  font-size: 24px;
+  text-align: center;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  outline: none;
+  font-weight: 700;
+  color: var(--airtel-navy);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pin-digit:focus {
+  border-color: var(--airtel-red);
+  box-shadow: 0 0 0 3px rgba(229, 25, 55, 0.15);
+}
+
+.security-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.security-badge svg {
+  width: 14px;
+  height: 14px;
+  color: #16a34a;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.footer-dark {
+  background-color: var(--airtel-navy);
+  color: #94a3b8;
+  padding: 14px 20px;
+  text-align: center;
+  font-size: 11.5px;
+  letter-spacing: 0.3px;
+  width: 100%;
+}
+
+.footer-light {
+  background: transparent;
+  color: var(--text-light);
+  padding: 16px 20px;
+  text-align: center;
+  font-size: 11.5px;
+  width: 100%;
+}
+
+/* ============================================================
+   ANIMATIONS & RESPONSIVE
+============================================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-card {
+  animation: fadeIn 0.25s ease-out;
+}
+
+@media (max-width: 540px) {
+  .navbar {
+    padding: 10px 16px;
+  }
+  .card-container {
+    padding: 24px 20px 20px 20px;
+    border-radius: 14px;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .monthly-payment-box {
+    padding: 10px 14px;
+  }
+  .payment-amount {
+    font-size: 20px;
+  }
+}
