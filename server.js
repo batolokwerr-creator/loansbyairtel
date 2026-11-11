@@ -3,27 +3,42 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = process.env.PORT || 3000;
+const HOST = '0.0.0.0';
 
 const MIME_TYPES = {
-  '.html': 'text/html',
-  '.css': 'text/css',
-  '.js': 'text/javascript',
-  '.json': 'application/json',
+  '.html': 'text/html; charset=UTF-8',
+  '.css': 'text/css; charset=UTF-8',
+  '.js': 'text/javascript; charset=UTF-8',
+  '.json': 'application/json; charset=UTF-8',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
   '.gif': 'image/gif',
-  '.svg': 'image/svg+xml',
+  '.svg': 'image/svg+xml; charset=UTF-8',
   '.ico': 'image/x-icon',
   '.woff': 'font/woff',
   '.woff2': 'font/woff2'
 };
 
 const server = http.createServer((req, res) => {
-  let reqPath = req.url.split('?')[0];
-  if (reqPath === '/' || reqPath === '') reqPath = '/index.html';
+  const urlPath = req.url.split('?')[0];
 
-  let filePath = path.join(__dirname, reqPath);
+  // Resolve file path
+  let relativePath = urlPath;
+  if (relativePath === '/' || relativePath === '') {
+    relativePath = '/index.html';
+  }
+
+  // Handle nested asset requests (e.g. /apply/css/styles.css -> /css/styles.css)
+  if (relativePath.includes('/css/')) {
+    relativePath = relativePath.slice(relativePath.indexOf('/css/'));
+  } else if (relativePath.includes('/js/')) {
+    relativePath = relativePath.slice(relativePath.indexOf('/js/'));
+  } else if (relativePath.includes('/assets/')) {
+    relativePath = relativePath.slice(relativePath.indexOf('/assets/'));
+  }
+
+  let filePath = path.join(__dirname, relativePath);
   let ext = path.extname(filePath).toLowerCase();
 
   // If no extension, try appending .html
@@ -32,31 +47,43 @@ const server = http.createServer((req, res) => {
     ext = '.html';
   }
 
-  fs.readFile(filePath, (err, content) => {
-    if (err) {
-      if (err.code === 'ENOENT') {
-        // Fallback to index.html for SPA/routes
-        fs.readFile(path.join(__dirname, 'index.html'), (fallbackErr, fallbackContent) => {
-          if (fallbackErr) {
-            res.writeHead(404, { 'Content-Type': 'text/plain' });
-            res.end('404 Not Found');
-          } else {
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(fallbackContent);
-          }
-        });
-      } else {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end(`Server Error: ${err.code}`);
-      }
-    } else {
-      res.writeHead(200, { 'Content-Type': MIME_TYPES[ext] || 'application/octet-stream' });
-      res.end(content);
+  // Check if file exists
+  fs.stat(filePath, (err, stats) => {
+    if (!err && stats.isFile()) {
+      const mime = MIME_TYPES[ext] || 'application/octet-stream';
+      res.writeHead(200, {
+        'Content-Type': mime,
+        'Content-Length': stats.size,
+        'Cache-Control': 'no-cache'
+      });
+      fs.createReadStream(filePath).pipe(res);
+      return;
     }
+
+    // For missing static assets (.css, .js, .png, etc.), return 404, NOT HTML fallback
+    if (ext !== '.html') {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      res.end(`404 Not Found: ${urlPath}`);
+      return;
+    }
+
+    // For HTML routes fallback to index.html (SPA)
+    const indexPath = path.join(__dirname, 'index.html');
+    fs.readFile(indexPath, (fallbackErr, content) => {
+      if (fallbackErr) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' });
+        res.end('404 Not Found');
+      } else {
+        res.writeHead(200, {
+          'Content-Type': 'text/html; charset=UTF-8',
+          'Cache-Control': 'no-cache'
+        });
+        res.end(content);
+      }
+    });
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+server.listen(PORT, HOST, () => {
+  console.log(`Server running at http://localhost:${PORT}/ and http://127.0.0.1:${PORT}/`);
 });
-
